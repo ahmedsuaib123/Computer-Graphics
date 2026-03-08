@@ -1,0 +1,38 @@
+#include <windows.h>  // for MS Windows
+#include <GL/glut.h>  // GLUT, include glu.h and gl.h
+
+void mydisplay() {
+	glClearColor(1, 1, 1, 1); // Set background color to black and opaque
+	glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+
+    glPointSize(15);
+    glBegin(GL_LINES);
+
+        glColor3f(0,0,0);
+        glVertex2f(0.5,0.3);
+        glVertex2f(-0.5,0.3);
+
+        glVertex2f(-0.5,0.3);
+        glVertex2f(-0.5,-0.3);
+
+        glVertex2f(-0.5,-0.3);
+        glVertex2f(0.5,-0.3);
+
+        glVertex2f(0.5,-0.3);
+        glVertex2f(0.5,0.3);
+
+    glEnd();
+
+	glFlush();  // Render now
+}
+
+/* Main function: GLUT runs as a console application starting at main()  */
+int main(int argc, char** argv) {
+	glutInit(&argc, argv);                 // Initialize GLUT
+	glutCreateWindow("Practice Computer Graphics 1"); // Create a window with the given title
+	glutInitWindowSize(320, 320);   // Set the window's initial width & height
+	glutDisplayFunc(mydisplay); // Register display callback handler for window re-paint
+	glutMainLoop();           // Enter the event-processing loop
+	return 0;
+}
+
